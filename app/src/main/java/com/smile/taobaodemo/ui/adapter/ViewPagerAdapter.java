@@ -4,7 +4,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.smile.taobaodemo.ui.fragment.NavCartFragment;
+import com.smile.taobaodemo.ui.fragment.NavHelpFragment;
 import com.smile.taobaodemo.ui.fragment.NavHomeFragment;
+import com.smile.taobaodemo.ui.fragment.NavMyFragment;
+import com.smile.taobaodemo.ui.fragment.NavWeFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,10 +25,10 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 
         fragments.clear();
         fragments.add(NavHomeFragment.newInstance());
-        fragments.add(NavHomeFragment.newInstance());
-        fragments.add(NavHomeFragment.newInstance());
-        fragments.add(NavHomeFragment.newInstance());
-        fragments.add(NavHomeFragment.newInstance());
+        fragments.add(NavWeFragment.newInstance());
+        fragments.add(NavHelpFragment.newInstance());
+        fragments.add(NavCartFragment.newInstance());
+        fragments.add(NavMyFragment.newInstance());
 
     }
 

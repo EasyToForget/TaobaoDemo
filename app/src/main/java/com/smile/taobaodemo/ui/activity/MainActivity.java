@@ -59,9 +59,9 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
         AHBottomNavigationItem item1 = new AHBottomNavigationItem(R.string.bottom_navigation_item_homepage, R.drawable.navtab_home, R.color.colorBottomNavigationActiveColored);
-        AHBottomNavigationItem item2 = new AHBottomNavigationItem(R.string.bottom_navigation_item_live, R.drawable.navtab_we, R.color.colorBottomNavigationActiveColored);
-        AHBottomNavigationItem item3 = new AHBottomNavigationItem(R.string.bottom_navigation_item_distribution, R.drawable.navtab_question, R.color.colorBottomNavigationActiveColored);
-        AHBottomNavigationItem item4 = new AHBottomNavigationItem(R.string.bottom_navigation_item_ranking, R.drawable.navtab_cart, R.color.colorBottomNavigationActiveColored);
+        AHBottomNavigationItem item2 = new AHBottomNavigationItem(R.string.bottom_navigation_item_we, R.drawable.navtab_we, R.color.colorBottomNavigationActiveColored);
+        AHBottomNavigationItem item3 = new AHBottomNavigationItem(R.string.bottom_navigation_item_question, R.drawable.navtab_question, R.color.colorBottomNavigationActiveColored);
+        AHBottomNavigationItem item4 = new AHBottomNavigationItem(R.string.bottom_navigation_item_cart, R.drawable.navtab_cart, R.color.colorBottomNavigationActiveColored);
         AHBottomNavigationItem item5 = new AHBottomNavigationItem(R.string.bottom_navigation_item_personal, R.drawable.navtab_user, R.color.colorBottomNavigationActiveColored);
 
         bottomNavigationItems.add(item1);
