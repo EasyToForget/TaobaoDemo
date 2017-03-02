@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -15,8 +16,11 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationViewPager;
 import com.smile.taobaodemo.R;
 import com.smile.taobaodemo.ui.adapter.ViewPagerAdapter;
+import com.smile.taobaodemo.utils.ToastUtil;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     private Context context;
     private Activity activity;
     private int currentPosition = 0;
+
+    private CountDownTimer timer;
 
     private ArrayList<AHBottomNavigationItem> bottomNavigationItems = new ArrayList<>();
 
@@ -85,11 +91,40 @@ public class MainActivity extends AppCompatActivity {
         });
         viewPager.setOffscreenPageLimit(5);
         viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
+
+        final List<String> tips = new ArrayList<>();
+        tips.add("AndroidNexus");
+        tips.add("EasyToForget");
+        tips.add("zhiye.wei@gmail.com");
+
+        timer = new CountDownTimer(3000000, 5000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                tvSearchTips.setText(tips.get(new Random().nextInt(2)));
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+        };
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        timer.start();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        timer.cancel();
     }
 
     @Override
