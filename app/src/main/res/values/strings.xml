@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">TaobaoDemo</string>
+
+    <string name="bottom_navigation_item_homepage">首页</string>
+    <string name="bottom_navigation_item_live">微淘</string>
+    <string name="bottom_navigation_item_distribution">问大家</string>
+    <string name="bottom_navigation_item_ranking">购物车</string>
+    <string name="bottom_navigation_item_personal">我的淘宝</string>
+
+    <string name="loading_full">没有更多了～</string>
+
+    <string name="home_tmall">天猫</string>
+    <string name="home_suan">聚划算</string>
+    <string name="home_global">天猫国际</string>
+    <string name="home_wai">外卖</string>
+    <string name="home_market">天猫超市</string>
+    <string name="home_charge">充值中心</string>
+    <string name="home_pig">飞猪旅行</string>
+    <string name="home_gold">领金币</string>
+    <string name="home_family">到家</string>
+    <string name="home_category">分类</string>
+
+    <string name="home_first">头条</string>
+
+    <string name="toast_network_error">网络错误</string>
 </resources>
