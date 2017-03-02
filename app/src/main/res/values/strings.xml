@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TaobaoDemo</string>
+    <string name="app_name">手机淘宝</string>
 
     <string name="bottom_navigation_item_homepage">首页</string>
     <string name="bottom_navigation_item_we">微淘</string>
