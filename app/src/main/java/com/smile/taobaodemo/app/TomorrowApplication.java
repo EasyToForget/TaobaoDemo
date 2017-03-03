@@ -8,7 +8,7 @@ import android.support.multidex.MultiDexApplication;
  * AppContext Application
  *
  * @author Smile Wei
- * @since 2014-04-04
+ * @since 2017-03-01
  */
 public class TomorrowApplication extends MultiDexApplication {
     private static Context context;

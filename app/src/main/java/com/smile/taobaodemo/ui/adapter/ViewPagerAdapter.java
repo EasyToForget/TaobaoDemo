@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  * @author Smile Wei
- * @since 2016/8/1.
+ * @since 2017/3/1.
  */
 public class ViewPagerAdapter extends FragmentPagerAdapter {
     private List<Fragment> fragments = new ArrayList<>();

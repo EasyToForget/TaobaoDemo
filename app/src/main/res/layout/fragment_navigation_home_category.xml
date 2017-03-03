@@ -11,7 +11,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/tv_baby"
+            android:id="@+id/tv_tmall"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -23,7 +23,7 @@
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/tv_beauty"
+            android:id="@+id/tv_suan"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -35,7 +35,7 @@
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/tv_clothing"
+            android:id="@+id/tv_global"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -47,7 +47,7 @@
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/tv_family"
+            android:id="@+id/tv_wai"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -59,7 +59,7 @@
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/tv_health_care"
+            android:id="@+id/tv_market"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -81,7 +81,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/tv_digital"
+            android:id="@+id/tv_charge"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -93,7 +93,7 @@
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/tv_food"
+            android:id="@+id/tv_pig"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -105,7 +105,7 @@
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/tv_sport"
+            android:id="@+id/tv_gold"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -117,7 +117,7 @@
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/tv_fruits"
+            android:id="@+id/tv_family"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -129,6 +129,7 @@
             android:textSize="12sp" />
 
         <TextView
+            android:id="@+id/tv_category"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

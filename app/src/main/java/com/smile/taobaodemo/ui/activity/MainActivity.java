@@ -1,14 +1,11 @@
 package com.smile.taobaodemo.ui.activity;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.widget.TextView;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
@@ -16,7 +13,6 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationViewPager;
 import com.smile.taobaodemo.R;
 import com.smile.taobaodemo.ui.adapter.ViewPagerAdapter;
-import com.smile.taobaodemo.utils.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +20,11 @@ import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+/**
+ * @author Smile Wei
+ * @since 2017/03/01.
+ */
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,10 +37,6 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.tv_search_tips)
     TextView tvSearchTips;
 
-    private Context context;
-    private Activity activity;
-    private int currentPosition = 0;
-
     private CountDownTimer timer;
 
     private ArrayList<AHBottomNavigationItem> bottomNavigationItems = new ArrayList<>();
@@ -49,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
         initView();
     }
 
@@ -59,9 +55,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void initView() {
-        context = getApplicationContext();
-        activity = this;
-
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
         AHBottomNavigationItem item1 = new AHBottomNavigationItem(R.string.bottom_navigation_item_homepage, R.drawable.navtab_home, R.color.colorBottomNavigationActiveColored);
@@ -92,6 +85,9 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setOffscreenPageLimit(5);
         viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
 
+        /**
+         * 顶部搜索框内容定时更新，简单的采用倒计时功能
+         */
         final List<String> tips = new ArrayList<>();
         tips.add("AndroidNexus");
         tips.add("EasyToForget");
@@ -125,21 +121,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         timer.cancel();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        return super.onPrepareOptionsMenu(menu);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override

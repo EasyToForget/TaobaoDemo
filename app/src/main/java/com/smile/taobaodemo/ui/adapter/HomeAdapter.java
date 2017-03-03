@@ -16,7 +16,6 @@ import com.smile.taobaodemo.R;
 import com.smile.taobaodemo.base.Type;
 import com.smile.taobaodemo.model.entity.HomeBase;
 import com.smile.taobaodemo.model.entity.HomeTop;
-import com.smile.taobaodemo.model.entity.LivePlay;
 import com.smile.taobaodemo.utils.GlideUtil;
 import com.smile.taobaodemo.widget.CirclePageIndicator;
 import com.smile.taobaodemo.widget.FooterLoading;
@@ -30,8 +29,9 @@ import cn.trinea.android.view.autoscrollviewpager.AutoScrollViewPager;
 
 /**
  * @author Smile Wei
- * @since 2016/4/12.
+ * @since 2017/03/01.
  */
+
 public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context context;
     private Activity activity;
@@ -158,18 +158,6 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         return list.size();
     }
 
-    public interface OnItemClickListener {
-        void onItemClick(int position, String id);
-
-        void onItemClick(int position, String id, List<LivePlay.Data> list);
-    }
-
-    private OnItemClickListener listener;
-
-    public void setOnItemClickListener(OnItemClickListener listener) {
-        this.listener = listener;
-    }
-
     class CarouselHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.view_pager)
         AutoScrollViewPager viewPager;
@@ -264,24 +252,6 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     class CategoryHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.tv_baby)
-        TextView tvBaby;
-        @BindView(R.id.tv_beauty)
-        TextView tvBeauty;
-        @BindView(R.id.tv_clothing)
-        TextView tvClothing;
-        @BindView(R.id.tv_family)
-        TextView tvFamily;
-        @BindView(R.id.tv_health_care)
-        TextView tvHealthCare;
-        @BindView(R.id.tv_digital)
-        TextView tvDigital;
-        @BindView(R.id.tv_food)
-        TextView tvFood;
-        @BindView(R.id.tv_sport)
-        TextView tvSport;
-        @BindView(R.id.tv_fruits)
-        TextView tvFruits;
 
         CategoryHolder(View view) {
             super(view);

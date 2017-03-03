@@ -8,7 +8,7 @@ import com.smile.taobaodemo.ui.contract.HomeContract;
 
 /**
  * @author Smile Wei
- * @since 2016/9/22.
+ * @since 2017/03/01.
  */
 
 public class HomePresenter implements HomeContract.Presenter {

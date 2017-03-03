@@ -8,7 +8,7 @@ import com.smile.taobaodemo.model.entity.HomeTop;
 
 /**
  * @author Smile Wei
- * @since 2016/9/22.
+ * @since 2017/3/1.
  */
 
 public interface HomeContract {
