@@ -87,11 +87,12 @@ public class HomeModelImpl implements HomeLoadModel {
         //模拟返回数据
         int spanCount = 300;
         List<HomeTop.Carousel> carouselList = new ArrayList<>();
-        carouselList.add(new HomeTop.Carousel(1, "https://img.alicdn.com/simba/img/TB1SZY8OFXXXXbMXXXXSutbFXXX.jpg"));
-        carouselList.add(new HomeTop.Carousel(2, "https://img.alicdn.com/simba/img/TB1I_lYPVXXXXatXXXXSutbFXXX.jpg"));
-        carouselList.add(new HomeTop.Carousel(3, "https://img.alicdn.com/simba/img/TB1UVzPPFXXXXX_XpXXSutbFXXX.jpg"));
-        carouselList.add(new HomeTop.Carousel(4, "https://img.alicdn.com/tps/TB16XwEPFXXXXbBXpXXXXXXXXXX-520-280.jpg_.webp"));
-        carouselList.add(new HomeTop.Carousel(5, "https://img.alicdn.com/tps/TB1WUU4PFXXXXX5XpXXXXXXXXXX-520-280.jpg_.webp"));
+        carouselList.add(new HomeTop.Carousel(1, "https://img.alicdn.com/simba/img/TB1AhFnPVXXXXa.XFXXSutbFXXX.jpg_q50.jpg"));
+        carouselList.add(new HomeTop.Carousel(2, "https://gw.alicdn.com/imgextra/i2/118/TB22AjYg7qvpuFjSZFhXXaOgXXa_!!118-0-yamato.jpg_q50.jpg"));
+        carouselList.add(new HomeTop.Carousel(3, "https://gw.alicdn.com/imgextra/i1/34/TB2Kea5fYVkpuFjSspcXXbSMVXa_!!34-0-yamato.jpg_q50.jpg"));
+        carouselList.add(new HomeTop.Carousel(4, "https://gw.alicdn.com/imgextra/i1/101/TB2Dz1ScYtlpuFjSspoXXbcDpXa_!!101-0-yamato.jpg_q50.jpg"));
+        carouselList.add(new HomeTop.Carousel(5, "https://gw.alicdn.com/imgextra/i4/140/TB2lWFJgmFjpuFjSspbXXXagVXa_!!140-0-yamato.jpg_q50.jpg"));
+        carouselList.add(new HomeTop.Carousel(6, "https://aecpm.alicdn.com/tps/i4/TB1pgxYJXXXXXcAXpXXrVZt0FXX-640-200.jpg_q50.jpg"));
         homeTop.setCarousel(carouselList);
 
         List<HomeBase> headlineList = new ArrayList<>();
