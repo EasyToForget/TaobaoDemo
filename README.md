@@ -1,15 +1,15 @@
-###TaobaoDemo
+### TaobaoDemo
 > **一个RecyclerView实现淘宝首页**
 
 > **使用RecyclerView的多条目布局，充分利用spanCount**
 
 
-###Demo
+### Demo
 ![image](https://raw.githubusercontent.com/EasyToForget/TaobaoDemo/master/demo01.gif)
 ![image](https://raw.githubusercontent.com/EasyToForget/TaobaoDemo/master/demo02.gif)
 
 
-###License
+### License
 
 ```
 Calendar for Android

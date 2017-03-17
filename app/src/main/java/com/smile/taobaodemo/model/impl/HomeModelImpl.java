@@ -3,7 +3,6 @@ package com.smile.taobaodemo.model.impl;
 import android.content.Context;
 
 import com.google.gson.Gson;
-import com.smile.taobaodemo.app.TomorrowApplication;
 import com.smile.taobaodemo.model.HomeLoadModel;
 import com.smile.taobaodemo.model.entity.HomeBase;
 import com.smile.taobaodemo.model.entity.HomeBottom;
@@ -25,14 +24,13 @@ import java.util.Map;
 
 public class HomeModelImpl implements HomeLoadModel {
     @Override
-    public void load(final OnLoadListener<HomeTop> listener, int type) {
+    public void load(final OnLoadListener<HomeTop> listener, Context context, int type) {
         //这里不调接口，直接返回
         if (type == 1) {
             listener.onSuccess(getTop());
             return;
         }
 
-        Context context = TomorrowApplication.getContext();
         if (!NetWorkUtil.isNetworkAvailable(context)) {
             listener.networkError();
             return;
@@ -53,12 +51,11 @@ public class HomeModelImpl implements HomeLoadModel {
     }
 
     @Override
-    public void load(final OnLoadListener<HomeBottom> listener, int type, int page, int pageSize) {
+    public void load(final OnLoadListener<HomeBottom> listener, Context context, int type, int page, int pageSize) {
         if (type == 2) {
             listener.onSuccess(getBottom(page));
             return;
         }
-        Context context = TomorrowApplication.getContext();
         if (!NetWorkUtil.isNetworkAvailable(context)) {
             listener.networkError();
             return;

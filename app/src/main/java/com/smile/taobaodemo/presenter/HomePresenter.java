@@ -1,5 +1,7 @@
 package com.smile.taobaodemo.presenter;
 
+import android.content.Context;
+
 import com.smile.taobaodemo.model.HomeLoadModel;
 import com.smile.taobaodemo.model.entity.HomeBottom;
 import com.smile.taobaodemo.model.entity.HomeTop;
@@ -14,10 +16,12 @@ import com.smile.taobaodemo.ui.contract.HomeContract;
 public class HomePresenter implements HomeContract.Presenter {
     private HomeContract.View view;
     private HomeLoadModel loadModel;
+    private Context context;
 
-    public void init(HomeContract.View view) {
+    public void init(HomeContract.View view, Context context) {
         loadModel = new HomeModelImpl();
         this.view = view;
+        this.context = context;
         this.view.initView();
     }
 
@@ -39,7 +43,7 @@ public class HomePresenter implements HomeContract.Presenter {
             public void networkError() {
                 view.networkError();
             }
-        }, type);
+        }, context, type);
 
     }
 
@@ -61,7 +65,7 @@ public class HomePresenter implements HomeContract.Presenter {
             public void networkError() {
                 view.networkError();
             }
-        }, type, page, pageSize);
+        }, context, type, page, pageSize);
     }
 
     @Override

@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">手机淘宝</string>
 
-    <string name="bottom_navigation_item_homepage">首页</string>
+    <string name="bottom_navigation_item_home">首页</string>
     <string name="bottom_navigation_item_we">微淘</string>
-    <string name="bottom_navigation_item_question">问大家</string>
+    <string name="bottom_navigation_item_help">问大家</string>
     <string name="bottom_navigation_item_cart">购物车</string>
-    <string name="bottom_navigation_item_personal">我的淘宝</string>
+    <string name="bottom_navigation_item_user">我的淘宝</string>
 
     <string name="loading_full">没有更多了～</string>
 

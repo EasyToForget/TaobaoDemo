@@ -31,6 +31,6 @@ public class NavMyFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_navigation_my, container, false);
+        return inflater.inflate(R.layout.fragment_navigation_user, container, false);
     }
 }

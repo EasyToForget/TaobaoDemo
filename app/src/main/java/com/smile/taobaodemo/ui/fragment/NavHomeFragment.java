@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.smile.taobaodemo.R;
-import com.smile.taobaodemo.app.TomorrowApplication;
 import com.smile.taobaodemo.base.Type;
 import com.smile.taobaodemo.model.entity.HomeBase;
 import com.smile.taobaodemo.model.entity.HomeBottom;
@@ -42,6 +41,7 @@ public class NavHomeFragment extends Fragment implements SwipeRefreshLayout.OnRe
     @BindView(R.id.recycler_view)
     LoadMoreRecyclerView recyclerView;
     private Context context;
+    private Activity activity;
 
     private List<HomeBase> list = new ArrayList<>();
 
@@ -68,16 +68,17 @@ public class NavHomeFragment extends Fragment implements SwipeRefreshLayout.OnRe
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_navigation_home, container, false);
         ButterKnife.bind(this, view);
+
+        activity = getActivity();
+        context = activity.getApplicationContext();
+
         presenter = new HomePresenter();
-        presenter.init(this);
+        presenter.init(this, context);
         return view;
     }
 
     @Override
     public void initView() {
-        Activity activity = getActivity();
-        context = TomorrowApplication.getContext();
-
         refreshLayout.setColorSchemeResources(R.color.font_orange_color);
         refreshLayout.setOnRefreshListener(this);
         int spanCount = getResources().getInteger(R.integer.grid_span_count);
