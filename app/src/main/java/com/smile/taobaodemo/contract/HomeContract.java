@@ -1,4 +1,4 @@
-package com.smile.taobaodemo.ui.contract;
+package com.smile.taobaodemo.contract;
 
 
 import com.smile.taobaodemo.base.BasePresenter;

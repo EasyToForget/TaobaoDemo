@@ -17,7 +17,7 @@ import com.smile.taobaodemo.model.entity.HomeBottom;
 import com.smile.taobaodemo.model.entity.HomeTop;
 import com.smile.taobaodemo.presenter.HomePresenter;
 import com.smile.taobaodemo.ui.adapter.HomeAdapter;
-import com.smile.taobaodemo.ui.contract.HomeContract;
+import com.smile.taobaodemo.contract.HomeContract;
 import com.smile.taobaodemo.utils.ToastUtil;
 import com.smile.taobaodemo.widget.LoadMoreRecyclerView;
 

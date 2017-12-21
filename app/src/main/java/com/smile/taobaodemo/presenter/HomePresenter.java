@@ -6,7 +6,7 @@ import com.smile.taobaodemo.model.HomeLoadModel;
 import com.smile.taobaodemo.model.entity.HomeBottom;
 import com.smile.taobaodemo.model.entity.HomeTop;
 import com.smile.taobaodemo.model.impl.HomeModelImpl;
-import com.smile.taobaodemo.ui.contract.HomeContract;
+import com.smile.taobaodemo.contract.HomeContract;
 
 /**
  * @author Smile Wei
