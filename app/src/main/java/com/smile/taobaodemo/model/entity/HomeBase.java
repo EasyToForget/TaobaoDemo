@@ -1,10 +1,13 @@
 package com.smile.taobaodemo.model.entity;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * @author Smile Wei
  * @since 2016/8/10.
  */
-public class HomeBase {
+public class HomeBase implements Parcelable {
     public static final String NULL_STRING = "";
     public static final double ZERO = 0;
     public static final int TYPE_PLACE = -1;
@@ -88,4 +91,40 @@ public class HomeBase {
     public void setSpanCount(int spanCount) {
         this.spanCount = spanCount;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(this.id);
+        dest.writeString(this.name);
+        dest.writeString(this.url);
+        dest.writeDouble(this.price);
+        dest.writeInt(this.type);
+        dest.writeInt(this.spanCount);
+    }
+
+    protected HomeBase(Parcel in) {
+        this.id = in.readLong();
+        this.name = in.readString();
+        this.url = in.readString();
+        this.price = in.readDouble();
+        this.type = in.readInt();
+        this.spanCount = in.readInt();
+    }
+
+    public static final Parcelable.Creator<HomeBase> CREATOR = new Parcelable.Creator<HomeBase>() {
+        @Override
+        public HomeBase createFromParcel(Parcel source) {
+            return new HomeBase(source);
+        }
+
+        @Override
+        public HomeBase[] newArray(int size) {
+            return new HomeBase[size];
+        }
+    };
 }

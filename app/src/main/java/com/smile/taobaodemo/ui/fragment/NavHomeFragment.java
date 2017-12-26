@@ -2,6 +2,7 @@ package com.smile.taobaodemo.ui.fragment;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -11,11 +12,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.smile.taobaodemo.R;
+import com.smile.taobaodemo.base.BundleKey;
 import com.smile.taobaodemo.base.Type;
 import com.smile.taobaodemo.model.entity.HomeBase;
 import com.smile.taobaodemo.model.entity.HomeBottom;
 import com.smile.taobaodemo.model.entity.HomeTop;
 import com.smile.taobaodemo.presenter.HomePresenter;
+import com.smile.taobaodemo.ui.activity.DetailActivity;
 import com.smile.taobaodemo.ui.adapter.HomeAdapter;
 import com.smile.taobaodemo.contract.HomeContract;
 import com.smile.taobaodemo.utils.ToastUtil;
@@ -33,7 +36,7 @@ import butterknife.ButterKnife;
  */
 
 public class NavHomeFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener,
-        LoadMoreRecyclerView.OnLoadMoreListener, HomeContract.View {
+        LoadMoreRecyclerView.OnLoadMoreListener, HomeContract.View, HomeAdapter.OnItemClickListener {
     private final static int HOME_TOP = 1;
     private final static int HOME_BOTTOM = 2;
     @BindView(R.id.refresh_layout)
@@ -86,6 +89,7 @@ public class NavHomeFragment extends Fragment implements SwipeRefreshLayout.OnRe
         GridLayoutManager layoutManager = new GridLayoutManager(activity, spanCount);
         recyclerView.setLayoutManager(layoutManager);
         adapter = new HomeAdapter(context, activity, list);
+        adapter.setOnItemClickListener(this);
         layoutManager.setSpanSizeLookup(adapter.getSpanSizeLookup());
         recyclerView.setAdapter(adapter);
         recyclerView.setOnLoadMoreListener(this);
@@ -170,4 +174,11 @@ public class NavHomeFragment extends Fragment implements SwipeRefreshLayout.OnRe
         }
     }
 
+    @Override
+    public void onItemClick(int position) {
+        Intent intent = new Intent();
+        intent.setClass(getActivity(), DetailActivity.class);
+        intent.putExtra(BundleKey.PARCELABLE, list.get(position));
+        startActivity(intent);
+    }
 }

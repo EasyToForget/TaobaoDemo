@@ -11,4 +11,6 @@
 
     <color name="bg_main_color">#F0F0F0</color>
     <color name="divider_main_color">#CCC</color>
+
+    <color name="font_gray_color">#C0C0C0</color>
 </resources>
