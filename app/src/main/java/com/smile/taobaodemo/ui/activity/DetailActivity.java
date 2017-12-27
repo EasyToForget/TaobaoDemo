@@ -16,6 +16,7 @@ import com.smile.taobaodemo.R;
 import com.smile.taobaodemo.base.BundleKey;
 import com.smile.taobaodemo.model.entity.HomeBase;
 import com.smile.taobaodemo.model.entity.HomeTop;
+import com.smile.taobaodemo.ui.adapter.GoodsDetailPagerAdapter;
 import com.smile.taobaodemo.ui.adapter.ImageHomeAdapter;
 import com.smile.taobaodemo.utils.StatusBarUtil;
 import com.smile.taobaodemo.widget.CirclePageIndicator;
@@ -99,5 +100,10 @@ public class DetailActivity extends AppCompatActivity {
         indicator.setViewPager(autoViewPager);
         autoViewPager.setInterval(4000);
         autoViewPager.setSlideBorderMode(AutoScrollViewPager.SLIDE_BORDER_MODE_TO_PARENT);
+
+        GoodsDetailPagerAdapter adapter = new GoodsDetailPagerAdapter(getSupportFragmentManager(),
+                new String[]{"商品描述", "评论(20)"});
+        viewPager.setAdapter(adapter);
+        tabLayout.setupWithViewPager(viewPager);
     }
 }
