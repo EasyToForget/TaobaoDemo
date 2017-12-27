@@ -141,19 +141,44 @@ public class SlideDetailsLayout extends ViewGroup {
         this.mPercent = percent;
     }
 
-    @Override
-    protected LayoutParams generateDefaultLayoutParams() {
-        return new MarginLayoutParams(MarginLayoutParams.WRAP_CONTENT, MarginLayoutParams.WRAP_CONTENT);
+    public class LayoutParams extends MarginLayoutParams{
+
+        public LayoutParams(Context c, AttributeSet attrs) {
+            super(c, attrs);
+        }
+
+        public LayoutParams(int width, int height) {
+            super(width, height);
+        }
+
+        public LayoutParams(MarginLayoutParams source) {
+            super(source);
+        }
+
+        public LayoutParams(ViewGroup.LayoutParams source) {
+            super(source);
+        }
     }
 
     @Override
-    public LayoutParams generateLayoutParams(AttributeSet attrs) {
-        return new MarginLayoutParams(getContext(), attrs);
+    protected LayoutParams generateLayoutParams(ViewGroup.LayoutParams p) {
+        return new LayoutParams(p);
+    }
+
+
+    @Override
+    public ViewGroup.LayoutParams generateLayoutParams(AttributeSet attrs) {
+        return new LayoutParams(getContext(), attrs);
     }
 
     @Override
-    protected LayoutParams generateLayoutParams(LayoutParams p) {
-        return new MarginLayoutParams(p);
+    protected ViewGroup.LayoutParams generateDefaultLayoutParams() {
+        return new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+    }
+
+    @Override
+    protected boolean checkLayoutParams(ViewGroup.LayoutParams p) {
+        return p instanceof LayoutParams;
     }
 
     @Override
@@ -182,18 +207,15 @@ public class SlideDetailsLayout extends ViewGroup {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        final int pWidth = MeasureSpec.getSize(widthMeasureSpec);
-        final int pHeight = MeasureSpec.getSize(heightMeasureSpec);
+        final int width = MeasureSpec.getSize(widthMeasureSpec);
+        final int height = MeasureSpec.getSize(heightMeasureSpec);
 
-        final int childWidthMeasureSpec =
-                MeasureSpec.makeMeasureSpec(pWidth, MeasureSpec.EXACTLY);
-        final int childHeightMeasureSpec =
-                MeasureSpec.makeMeasureSpec(pHeight, MeasureSpec.EXACTLY);
+         int childWidthMeasureSpec = MeasureSpec.makeMeasureSpec(width, MeasureSpec.EXACTLY);
+         int childHeightMeasureSpec = MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY);
 
         View child;
         for (int i = 0; i < getChildCount(); i++) {
             child = getChildAt(i);
-            // skip measure if gone
             if (child.getVisibility() == GONE) {
                 continue;
             }
@@ -201,7 +223,7 @@ public class SlideDetailsLayout extends ViewGroup {
             measureChild(child, childWidthMeasureSpec, childHeightMeasureSpec);
         }
 
-        setMeasuredDimension(pWidth, pHeight);
+        setMeasuredDimension(width, height);
     }
 
     @Override
@@ -215,7 +237,6 @@ public class SlideDetailsLayout extends ViewGroup {
         for (int i = 0; i < getChildCount(); i++) {
             child = getChildAt(i);
 
-            // skip layout
             if (child.getVisibility() == GONE) {
                 continue;
             }
