@@ -70,10 +70,10 @@ public class SlideDetailsLayout extends ViewGroup {
     private float slideOffset;
     private Status status = Status.CLOSE;
     private boolean isFirstShowBehindView = true;
-    private float mPercent = DEFAULT_PERCENT;
-    private long mDuration = DEFAULT_DURATION;
-    private int mDefaultPanel = 0;
-    private VelocityTracker mVelocityTracker;
+    private float percent = DEFAULT_PERCENT;
+    private long duration = DEFAULT_DURATION;
+    private int defaultPanel = 0;
+    private VelocityTracker velocityTracker;
 
     private OnSlideDetailsListener listener;
 
@@ -89,9 +89,9 @@ public class SlideDetailsLayout extends ViewGroup {
         super(context, attrs, defStyleAttr);
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.SlideDetailsLayout, defStyleAttr, 0);
-        mPercent = a.getFloat(R.styleable.SlideDetailsLayout_percent, DEFAULT_PERCENT);
-        mDuration = a.getInt(R.styleable.SlideDetailsLayout_duration, DEFAULT_DURATION);
-        mDefaultPanel = a.getInt(R.styleable.SlideDetailsLayout_default_panel, 0);
+        percent = a.getFloat(R.styleable.SlideDetailsLayout_percent, DEFAULT_PERCENT);
+        duration = a.getInt(R.styleable.SlideDetailsLayout_duration, DEFAULT_DURATION);
+        defaultPanel = a.getInt(R.styleable.SlideDetailsLayout_default_panel, 0);
         a.recycle();
 
         touchSlop = ViewConfiguration.get(getContext()).getScaledTouchSlop();
@@ -115,7 +115,7 @@ public class SlideDetailsLayout extends ViewGroup {
         if (status != Status.OPEN) {
             status = Status.OPEN;
             final float height = -getMeasuredHeight();
-            animatorSwitch(0, height, true, smooth ? mDuration : 0);
+            animatorSwitch(0, height, true, smooth ? duration : 0);
         }
     }
 
@@ -128,7 +128,7 @@ public class SlideDetailsLayout extends ViewGroup {
         if (status != Status.CLOSE) {
             status = Status.OPEN;
             final float height = -getMeasuredHeight();
-            animatorSwitch(height, 0, true, smooth ? mDuration : 0);
+            animatorSwitch(height, 0, true, smooth ? duration : 0);
         }
     }
 
@@ -138,7 +138,7 @@ public class SlideDetailsLayout extends ViewGroup {
      * @param percent (0.0, 1.0)
      */
     public void setPercent(float percent) {
-        this.mPercent = percent;
+        this.percent = percent;
     }
 
     public class LayoutParams extends MarginLayoutParams{
@@ -185,7 +185,7 @@ public class SlideDetailsLayout extends ViewGroup {
     protected void onFinishInflate() {
         super.onFinishInflate();
 
-        final int childCount = getChildCount();
+        int childCount = getChildCount();
         if (1 >= childCount) {
             throw new RuntimeException("SlideDetailsLayout only accept childs more than 1!!");
         }
@@ -195,7 +195,7 @@ public class SlideDetailsLayout extends ViewGroup {
 
         // set behindview's visibility to GONE before show.
         behindView.setVisibility(GONE);
-        if (mDefaultPanel == 1) {
+        if (defaultPanel == 1) {
             post(new Runnable() {
                 @Override
                 public void run() {
@@ -269,12 +269,12 @@ public class SlideDetailsLayout extends ViewGroup {
         boolean shouldIntercept = false;
         switch (action) {
             case MotionEvent.ACTION_DOWN: {
-                if (null == mVelocityTracker) {
-                    mVelocityTracker = VelocityTracker.obtain();
+                if (null == velocityTracker) {
+                    velocityTracker = VelocityTracker.obtain();
                 } else {
-                    mVelocityTracker.clear();
+                    velocityTracker.clear();
                 }
-                mVelocityTracker.addMovement(ev);
+                velocityTracker.addMovement(ev);
 
                 initMotionX = ev.getX();
                 initMotionY = ev.getY();
@@ -318,9 +318,9 @@ public class SlideDetailsLayout extends ViewGroup {
     }
 
     private void recycleVelocityTracker() {
-        if (null != mVelocityTracker) {
-            mVelocityTracker.recycle();
-            mVelocityTracker = null;
+        if (null != velocityTracker) {
+            velocityTracker.recycle();
+            velocityTracker = null;
         }
     }
 
@@ -349,8 +349,8 @@ public class SlideDetailsLayout extends ViewGroup {
             }
 
             case MotionEvent.ACTION_MOVE: {
-                mVelocityTracker.addMovement(ev);
-                mVelocityTracker.computeCurrentVelocity(1000);
+                velocityTracker.addMovement(ev);
+                velocityTracker.computeCurrentVelocity(1000);
                 final float y = ev.getY();
                 final float yDiff = y - initMotionY;
                 if (canChildScrollVertically(((int) yDiff))) {
@@ -416,16 +416,16 @@ public class SlideDetailsLayout extends ViewGroup {
      * Called after gesture is ending.
      */
     private void finishTouchEvent() {
-        final int pHeight = getMeasuredHeight();
-        final int percent = (int) (pHeight * mPercent);
+        final int height = getMeasuredHeight();
+        final int perHeight = (int) (height * percent);
         final float offset = slideOffset;
 
         boolean changed = false;
-        final float yVelocity = mVelocityTracker.getYVelocity();
+        final float yVelocity = velocityTracker.getYVelocity();
 
         if (Status.CLOSE == status) {
-            if (offset <= -percent || yVelocity <= -DEFAULT_MAX_VELOCITY) {
-                slideOffset = -pHeight;
+            if (offset <= -perHeight || yVelocity <= -DEFAULT_MAX_VELOCITY) {
+                slideOffset = -height;
                 status = Status.OPEN;
                 changed = true;
             } else {
@@ -433,13 +433,13 @@ public class SlideDetailsLayout extends ViewGroup {
                 slideOffset = 0;
             }
         } else if (Status.OPEN == status) {
-            if ((offset + pHeight) >= percent || yVelocity >= DEFAULT_MAX_VELOCITY) {
+            if ((offset + height) >= perHeight || yVelocity >= DEFAULT_MAX_VELOCITY) {
                 slideOffset = 0;
                 status = Status.CLOSE;
                 changed = true;
             } else {
                 // keep panel opened
-                slideOffset = -pHeight;
+                slideOffset = -height;
             }
         }
 
@@ -447,7 +447,7 @@ public class SlideDetailsLayout extends ViewGroup {
     }
 
     private void animatorSwitch(final float start, final float end) {
-        animatorSwitch(start, end, true, mDuration);
+        animatorSwitch(start, end, true, duration);
     }
 
     private void animatorSwitch(final float start, final float end, final long duration) {
@@ -455,7 +455,7 @@ public class SlideDetailsLayout extends ViewGroup {
     }
 
     private void animatorSwitch(final float start, final float end, final boolean changed) {
-        animatorSwitch(start, end, changed, mDuration);
+        animatorSwitch(start, end, changed, duration);
     }
 
     private void animatorSwitch(final float start,
